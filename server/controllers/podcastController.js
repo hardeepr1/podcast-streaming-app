@@ -7,6 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('mongodb');
 
 function podcastController() {
+  //method to get the collectiong of all the podcasts from database
   async function get(req, res) {
     try {
       const { db, client } = await connectToDatabase();
@@ -31,29 +32,24 @@ function podcastController() {
     }
   }
 
-  function getById(req, res) {
+  //method to get podcast by id
+  async function getById(req, res) {
     const podcastId = req.params.id;
-    const returedPodcast = mockData.podcasts.filter(
-      (podcast) => podcast.id === podcastId
-    );
-    Podcast.findById(podcastId, (err, podcast) => {
-      if (err) {
-        return res.send(err);
-      }
+    try{
+      const { db, client } = await connectToDatabase();
+
+      let podcast = await db.collection('podcasts').find({_id: podcastId});
 
       if (podcast) {
-        const returnPodcast = podcast.transform();
-        return res.json(returnPodcast);
-      }
-
-      return res.status(404);
-    });
-
-    if (returedPodcast) {
-      return res.send(returedPodcast);
+          const returnPodcast = podcast.transform();
+          return res.json(returnPodcast);
+        }else{
+          return res.status(404); 
+        }
+    }catch(err){
+      console.log("An error has occured while getting podcast by id"+ err)
+      return res.send(err);
     }
-
-    return res.status(404);
   }
 
   async function deleteById(req, res) {

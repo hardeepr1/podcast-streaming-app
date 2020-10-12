@@ -2,9 +2,6 @@ const express = require('express');
 const podcastController = require('../controllers/podcastController');
 const multer = require('multer');
 
-//this is just for time being should be replaced by actual database.
-const mockData = require('../mockData.js');
-
 function routes(database) {
   const podcastRouter = express.Router();
   const controller = podcastController(database);

@@ -1,16 +1,10 @@
 const express = require('express');
-
-//this is just for time being should be replaced by actual database.
-const mockData = require('../mockData.js');
+const artistController = require('../controllers/artistController');
 
 function routes() {
   const artistRouter = express.Router();
-
-  artistRouter.get('/artist', function (req, res) {
-    const returnedAuthors = mockData.authors;
-    res.status(201);
-    return res.send(returnedAuthors);
-  });
+  controller = artistController();
+  artistRouter.get('/artists', controller.get);
 
   return artistRouter;
 }

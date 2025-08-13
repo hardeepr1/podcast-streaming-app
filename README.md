@@ -1,4 +1,4 @@
-# podcast-streaming-app# Podcast Streaming App - High Level Design
+Podcast Streaming App
 
 ## Overview
 
@@ -71,26 +71,5 @@ The Podcast Streaming App is a full-stack web application that enables users to 
 - `PUT /api/podcasts/:id` - Update podcast
 - `DELETE /api/podcasts/:id` - Delete podcast
 - `POST /api/upload` - Upload media to Cloudinary
-
----
-
-## Security & Best Practices
-
-- Environment variables for secrets/keys
-- Input validation and error handling
-- CORS configuration
-- Secure file uploads
-
----
-
-## Extensibility
-
-- Add user authentication (JWT, OAuth)
-- Add comments/ratings for podcasts
-- Integrate with external podcast APIs
-
----
-
-## Conclusion
 
 This design provides a scalable, maintainable foundation for a modern podcast streaming platform, leveraging popular open-source technologies and cloud services.
